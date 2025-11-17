@@ -14,8 +14,11 @@ import httpx
 # Exercise 1.1: Fetch and display all posts (first 5)
 url = "https://jsonplaceholder.typicode.com/posts"
 # TODO: Send GET request and display first 5 posts
-
-
+fetch = httpx.get("https://jsonplaceholder.typicode.com/posts")
+if fetch.status_code == 200:
+    posts = fetch.json
+    for post in posts:
+        print(f"Title = {post["title"]}")
 # Exercise 1.2: Fetch a single post by ID
 url = "https://jsonplaceholder.typicode.com/posts/1"
 # TODO: Send GET request and display the post details
